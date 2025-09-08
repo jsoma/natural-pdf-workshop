@@ -252,13 +252,18 @@ def create_setup_cell(zip_name, config, install_packages="pandas natural_pdf tqd
     output_dir = config.get('output_dir', 'docs')
     
     source_lines = [
-        "# First we need to download some things!\n",
-        "# Run this cell to get the necessary data and software\n"
-        "import os\n",
-        "import urllib.request\n",
-        "import zipfile\n",
-        "\n",
+        "# First we need to install some things!\n",
+        "# Run this cell to get the necessary software\n"
     ]
+    
+    # Only add imports if we have a zip file to download
+    if zip_name:
+        source_lines.extend([
+            "import os\n",
+            "import urllib.request\n",
+            "import zipfile\n",
+            "\n",
+        ])
     
     # Handle package installation
     if install_packages:
@@ -277,19 +282,23 @@ def create_setup_cell(zip_name, config, install_packages="pandas natural_pdf tqd
                 source_lines.append(f"!pip install --upgrade --quiet {package.strip()}\n")
         source_lines.append("\n")
     
-    source_lines.extend([
-        "# Download and extract data files\n",
-        f"url = 'https://github.com/{github_repo}/raw/{github_branch}/{output_dir}/{zip_name}'\n",
-        "print(f'Downloading data from {url}...')\n",
-        f"urllib.request.urlretrieve(url, '{zip_name}')\n",
-        "\n",
-        f"print('Extracting {zip_name}...')\n",
-        f"with zipfile.ZipFile('{zip_name}', 'r') as zip_ref:\n",
-        "    zip_ref.extractall('.')\n",
-        "\n",
-        f"os.remove('{zip_name}')\n",
-        "print('✓ Data files extracted!')"
-    ])
+    # Only add download/extract code if we have a zip file
+    if zip_name:
+        source_lines.extend([
+            "# Download and extract data files\n",
+            f"url = 'https://github.com/{github_repo}/raw/{github_branch}/{output_dir}/{zip_name}'\n",
+            "print(f'Downloading data from {url}...')\n",
+            f"urllib.request.urlretrieve(url, '{zip_name}')\n",
+            "\n",
+            f"print('Extracting {zip_name}...')\n",
+            f"with zipfile.ZipFile('{zip_name}', 'r') as zip_ref:\n",
+            "    zip_ref.extractall('.')\n",
+            "\n",
+            f"os.remove('{zip_name}')\n",
+            "print('✓ Data files extracted!')"
+        ])
+    else:
+        source_lines.append("print('✓ Packages installed!')")
     
     # Add links section if provided
     if links:
@@ -363,9 +372,9 @@ def process_notebook(notebook_path, output_dir, config, section_slides=None):
                 "outputs": []
             }
     
-    # Add setup cell if data files are specified
-    if metadata.get('data_files'):
-        zip_name = f"{base_name}-data.zip"
+    # Add setup cell if data files or install packages are specified
+    if metadata.get('data_files') or metadata.get('install'):
+        zip_name = f"{base_name}-data.zip" if metadata.get('data_files') else None
         install_packages = metadata.get('install', 'pandas natural_pdf tqdm')
         links = metadata.get('links', None)
         setup_cell = create_setup_cell(zip_name, config, install_packages, links)
@@ -380,8 +389,9 @@ def process_notebook(notebook_path, output_dir, config, section_slides=None):
         complete_nb['cells'].insert(insert_pos, setup_cell)
         exercise_nb['cells'].insert(insert_pos, setup_cell)
         
-        # Create data zip with paths relative to notebook directory
-        create_data_zip(metadata['data_files'], output_dir / zip_name, notebook_dir)
+        # Create data zip only if data files are specified
+        if metadata.get('data_files'):
+            create_data_zip(metadata['data_files'], output_dir / zip_name, notebook_dir)
     
     # Write output files
     output_dir = Path(output_dir)
