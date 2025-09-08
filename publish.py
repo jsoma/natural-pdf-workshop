@@ -346,10 +346,15 @@ def process_notebook(notebook_path, output_dir, config, section_slides=None):
     # Create exercise version
     exercise_nb = json.loads(json.dumps(complete_nb))  # Deep copy
     
-    # Process cells for exercise version - replace solution-tagged cells
+    # Process cells for exercise version
     for i, cell in enumerate(exercise_nb['cells']):
+        # Clear outputs for all code cells (keep the source code)
+        if cell['cell_type'] == 'code':
+            cell['outputs'] = []
+            cell['execution_count'] = None
+        
+        # Replace solution-tagged cells with empty cells
         if cell.get('metadata', {}).get('tags') and 'solution' in cell['metadata']['tags']:
-            # Replace with empty cell
             exercise_nb['cells'][i] = {
                 "cell_type": "code",
                 "metadata": {},
