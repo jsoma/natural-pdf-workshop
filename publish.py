@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Simple notebook publishing script for BIRN workshop.
+Simple notebook publishing script for workshops.
 Processes notebooks with metadata and solution-tagged cells.
 """
 
@@ -245,27 +245,15 @@ def load_config():
     with open(config_path, 'r') as f:
         return yaml.safe_load(f)
 
-def create_setup_cell(zip_name, config, install_packages="pandas natural_pdf tqdm", links=None):
+def create_setup_cell(zip_name, config, install_packages="pandas natural_pdf tqdm"):
     """Create setup cell that works in Colab, Jupyter, etc."""
     github_repo = config['github_repo']
     github_branch = config.get('github_branch', 'main')
     output_dir = config.get('output_dir', 'docs')
     
-    source_lines = [
-        "# First we need to install some things!\n",
-        "# Run this cell to get the necessary software\n"
-    ]
+    source_lines = []
     
-    # Only add imports if we have a zip file to download
-    if zip_name:
-        source_lines.extend([
-            "import os\n",
-            "import urllib.request\n",
-            "import zipfile\n",
-            "\n",
-        ])
-    
-    # Handle package installation
+    # Handle package installation first
     if install_packages:
         source_lines.append("# Install required packages\n")
         if isinstance(install_packages, str):
@@ -281,6 +269,15 @@ def create_setup_cell(zip_name, config, install_packages="pandas natural_pdf tqd
             if package.strip():  # Only if package name is not empty
                 source_lines.append(f"!pip install --upgrade --quiet {package.strip()}\n")
         source_lines.append("\n")
+    
+    # Only add imports if we have a zip file to download
+    if zip_name:
+        source_lines.extend([
+            "import os\n",
+            "import urllib.request\n",
+            "import zipfile\n",
+            "\n",
+        ])
     
     # Only add download/extract code if we have a zip file
     if zip_name:
@@ -299,21 +296,6 @@ def create_setup_cell(zip_name, config, install_packages="pandas natural_pdf tqd
         ])
     else:
         source_lines.append("print('✓ Packages installed!')")
-    
-    # Add links section if provided
-    if links:
-        source_lines.extend([
-            "\n",
-            "# Useful links:\n"
-        ])
-        for link in links:
-            name = link.get('name', 'Link')
-            url = link.get('url', '#')
-            desc = link.get('description', '')
-            if desc:
-                source_lines.append(f"# - {name}: {url} ({desc})\n")
-            else:
-                source_lines.append(f"# - {name}: {url}\n")
     
     return {
         "cell_type": "code",
@@ -376,18 +358,11 @@ def process_notebook(notebook_path, output_dir, config, section_slides=None):
     if metadata.get('data_files') or metadata.get('install'):
         zip_name = f"{base_name}-data.zip" if metadata.get('data_files') else None
         install_packages = metadata.get('install', 'pandas natural_pdf tqdm')
-        links = metadata.get('links', None)
-        setup_cell = create_setup_cell(zip_name, config, install_packages, links)
+        setup_cell = create_setup_cell(zip_name, config, install_packages)
         
-        # Find first non-metadata cell position
-        insert_pos = 0
-        for i, cell in enumerate(complete_nb['cells']):
-            if cell['cell_type'] == 'markdown':
-                insert_pos = i + 1
-                break
-        
-        complete_nb['cells'].insert(insert_pos, setup_cell)
-        exercise_nb['cells'].insert(insert_pos, setup_cell)
+        # Insert setup cell at position 0 (very first cell)
+        complete_nb['cells'].insert(0, setup_cell)
+        exercise_nb['cells'].insert(0, setup_cell)
         
         # Create data zip only if data files are specified
         if metadata.get('data_files'):
@@ -403,15 +378,16 @@ def process_notebook(notebook_path, output_dir, config, section_slides=None):
     # Handle slides if specified (item-specific or section-level)
     slide_file = metadata.get('slides')
     if slide_file:
-        # Add simple markdown cell with slide link at the very top
+        # Add simple markdown cell with slide link after setup cell
         slide_link_cell = {
             "cell_type": "markdown",
             "metadata": {},
             "source": [f"**Slides:** [{slide_file}](./{slide_file})"]
         }
-        # Insert at position 0 (very first cell)
-        complete_nb['cells'].insert(0, slide_link_cell)
-        exercise_nb['cells'].insert(0, slide_link_cell)
+        # Insert at position 1 if setup cell exists, otherwise at position 0
+        insert_pos = 1 if (metadata.get('data_files') or metadata.get('install')) else 0
+        complete_nb['cells'].insert(insert_pos, slide_link_cell)
+        exercise_nb['cells'].insert(insert_pos, slide_link_cell)
         
         # Copy slide file to output
         source_pdf = notebook_dir / slide_file
@@ -880,6 +856,7 @@ def create_index(notebooks, config, output_dir):
     index_content = index_content.replace('{{ notebooks }}', '\n'.join(notebooks_md))
     index_content = index_content.replace('{{ author }}', config.get('author', ''))
     index_content = index_content.replace('{{ organization }}', config.get('organization', ''))
+    index_content = index_content.replace('{{ newsletter }}', config.get('newsletter_signup', ''))
     
     # Convert to HTML and write
     html_content = markdown_to_html(index_content, config.get('title', 'Workshop'))

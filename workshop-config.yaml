@@ -14,6 +14,9 @@ sections:
     folder: "."
     slides: "slides.pdf"
 
+newsletter_signup: |
+  <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script><iframe src="https://subscribe-forms.beehiiv.com/0cfef682-b6ec-44eb-be72-e3241030da26" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width: ; height: ; margin: 0; border-radius: 0px 0px 0px 0px !important; background-color: transparent; box-shadow: 0 0 #0000; max-width: 100%;"></iframe>
+
 # Publishing options
 output_dir: "docs"
 index_template: |
@@ -28,7 +31,9 @@ index_template: |
   {{ description }}
     
   {{ notebooks }}
-  
+
+  {{ newsletter }}  
+
   ---
   
-  *Created for by {{ author }}*
+  *Created by {{ author }}*
