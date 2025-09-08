@@ -1,0 +1,34 @@
+# Workshop configuration
+title: "Analyzing PDFs with Natural PDF"
+description: "Learn to extract data from PDFs with the ultimate spatial magic of Natural PDF"
+github_repo: "jsoma/natural-pdf-workshop"
+github_branch: "main"
+
+# Workshop metadata
+author: "Jonathan Soma"
+date: "2025"
+
+# Sections to process
+sections:
+  - title: "Natural PDF"
+    folder: "."
+    slides: "slides.pdf"
+
+# Publishing options
+output_dir: "docs"
+index_template: |
+  # {{ title }}
+  
+  **Jonathan Soma**, Columbia University
+
+  **Contact:** [js4571@columbia.edu](mailto:js4571@columbia.edu) • [@dangerscarf](https://x.com/dangerscarf)
+  
+  **Sites:** [Lede Program](https://ledeprogram.com/) • [jonathansoma.com](https://jonathansoma.com/) • [Practical AI for Investigative Journalism](https://www.youtube.com/playlist?list=PLewNEVDy7gq1_GPUaL0OQ31QsiHP5ncAQ) • [Bad PDFs](https://badpdfs.com/)
+
+  {{ description }}
+    
+  {{ notebooks }}
+  
+  ---
+  
+  *Created for by {{ author }}*
