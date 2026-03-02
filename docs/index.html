@@ -230,39 +230,25 @@ window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', fu
 <script>
 // Detect blocked newsletter iframes and show a fallback link
 (function() {
+    function replaceWithLink(iframe, src) {
+        var link = document.createElement('a');
+        link.href = src;
+        link.textContent = 'Subscribe to the newsletter';
+        link.style.display = 'inline-block';
+        link.style.marginTop = '0.5em';
+        iframe.replaceWith(link);
+    }
     document.querySelectorAll('.newsletter-signup iframe').forEach(function(iframe) {
         var src = iframe.src;
         if (!src) return;
+        // Check iframe dimensions after it settles — blocked iframes
+        // typically render as 0-height or very small
         var timer = setTimeout(function() {
-            var link = document.createElement('a');
-            link.href = src;
-            link.textContent = 'Subscribe to the newsletter';
-            link.style.display = 'inline-block';
-            link.style.marginTop = '0.5em';
-            iframe.replaceWith(link);
-        }, 3000);
-        iframe.addEventListener('load', function() {
-            try {
-                // If we can't access contentDocument, it loaded cross-origin (OK)
-                // Check if body is empty (blocked)
-                var doc = iframe.contentDocument || iframe.contentWindow.document;
-                if (doc && doc.body && doc.body.innerHTML.trim() === '') {
-                    clearTimeout(timer);
-                    timer = null;
-                    var link = document.createElement('a');
-                    link.href = src;
-                    link.textContent = 'Subscribe to the newsletter';
-                    link.style.display = 'inline-block';
-                    link.style.marginTop = '0.5em';
-                    iframe.replaceWith(link);
-                } else {
-                    clearTimeout(timer);
-                }
-            } catch(e) {
-                // Cross-origin — iframe loaded successfully
-                clearTimeout(timer);
+            var h = iframe.offsetHeight || iframe.getBoundingClientRect().height;
+            if (h < 20) {
+                replaceWithLink(iframe, src);
             }
-        });
+        }, 3000);
     });
 })();
 </script>

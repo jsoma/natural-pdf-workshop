@@ -482,6 +482,12 @@
         grid-column: 1;
         margin-top: 0.8em;
     }
+    .theme-noir .primary-btn,
+    .theme-broadsheet .primary-btn,
+    .theme-noir .read-btn,
+    .theme-broadsheet .read-btn {
+        text-align: center;
+    }
     .theme-noir .secondary-actions,
     .theme-broadsheet .secondary-actions,
     .theme-noir .ref-links,

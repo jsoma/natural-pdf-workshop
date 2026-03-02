@@ -68,7 +68,7 @@
 </nav>
 
 
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=67a72851">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=5f4a5387">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -84,7 +84,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=a369f46a"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=17c8629b"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Slides:</strong> <a href="./slides.pdf">slides.pdf</a></p>
@@ -638,9 +638,9 @@ Jungle Health and Safety Inspection Service
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_subarea output_widget_view" id="fb29beb2-ca01-4703-b468-d5fa6955f5d8">
+<div class="output_subarea output_widget_view" id="a5509551-0219-461f-a62d-406b3bb70c66">
 <script type="text/javascript">
-var element = $('#fb29beb2-ca01-4703-b468-d5fa6955f5d8');
+var element = $('#a5509551-0219-461f-a62d-406b3bb70c66');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "e6b53e1460124b818f13f1b5917e4b40", "version_major": 2, "version_minor": 0}
@@ -1093,39 +1093,25 @@ window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', fu
 <script>
 // Detect blocked newsletter iframes and show a fallback link
 (function() {
+    function replaceWithLink(iframe, src) {
+        var link = document.createElement('a');
+        link.href = src;
+        link.textContent = 'Subscribe to the newsletter';
+        link.style.display = 'inline-block';
+        link.style.marginTop = '0.5em';
+        iframe.replaceWith(link);
+    }
     document.querySelectorAll('.newsletter-signup iframe').forEach(function(iframe) {
         var src = iframe.src;
         if (!src) return;
+        // Check iframe dimensions after it settles — blocked iframes
+        // typically render as 0-height or very small
         var timer = setTimeout(function() {
-            var link = document.createElement('a');
-            link.href = src;
-            link.textContent = 'Subscribe to the newsletter';
-            link.style.display = 'inline-block';
-            link.style.marginTop = '0.5em';
-            iframe.replaceWith(link);
-        }, 3000);
-        iframe.addEventListener('load', function() {
-            try {
-                // If we can't access contentDocument, it loaded cross-origin (OK)
-                // Check if body is empty (blocked)
-                var doc = iframe.contentDocument || iframe.contentWindow.document;
-                if (doc && doc.body && doc.body.innerHTML.trim() === '') {
-                    clearTimeout(timer);
-                    timer = null;
-                    var link = document.createElement('a');
-                    link.href = src;
-                    link.textContent = 'Subscribe to the newsletter';
-                    link.style.display = 'inline-block';
-                    link.style.marginTop = '0.5em';
-                    iframe.replaceWith(link);
-                } else {
-                    clearTimeout(timer);
-                }
-            } catch(e) {
-                // Cross-origin — iframe loaded successfully
-                clearTimeout(timer);
+            var h = iframe.offsetHeight || iframe.getBoundingClientRect().height;
+            if (h < 20) {
+                replaceWithLink(iframe, src);
             }
-        });
+        }, 3000);
     });
 })();
 </script>
