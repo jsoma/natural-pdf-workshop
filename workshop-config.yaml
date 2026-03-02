@@ -1,42 +1,96 @@
 # Workshop configuration
-title: "Modern PDFs processing with Natural PDF"
-description: "Learn to extract data from PDFs with the ultimate spatial magic of Natural PDF"
-github_repo: "jsoma/natural-pdf-workshop"
+title: "Modern PDF processing with Natural PDF"
+description: "Learn to extract data from PDFs with the spatial magic of Natural PDF. Basic text extraction to OCR, AI, and complex layouts — everything you need to get structured data out of any PDF."
+# github_repo is auto-detected from git remote; uncomment to override:
+# github_repo: "jsoma/natural-pdf-workshop"
 github_branch: "main"
 
 # Workshop metadata
-author: "Jonathan Soma"
-date: "2025"
+author: "Jonathan Soma, Columbia University"
+conference_label: "NICAR 2026"
+
+meta_links:
+  - name: "js4571@columbia.edu"
+    url: "mailto:js4571@columbia.edu"
+  - name: "@dangerscarf"
+    url: "https://x.com/dangerscarf"
+  - name: "Lede Program"
+    url: "https://ledeprogram.com/"
+  - name: "jonathansoma.com"
+    url: "https://jonathansoma.com/"
+  - name: "Bad PDFs"
+    url: "https://badpdfs.com/"
 
 # Sections to process
 sections:
   - title: "Natural PDF"
     folder: "."
     slides: "slides.pdf"
+    notebooks:
+      "01-Natural PDF basics with text and tables.ipynb":
+        title: "Natural PDF basics with text and tables"
+        description: "Natural PDF is a spatially-aware PDF processing library that makes accessing PDF data a breeze."
+        order: 1
+        install: "natural_pdf>=0.5.0"
+        links:
+          - name: "Natural PDF documentation"
+            url: "https://jsoma.github.io/natural-pdf/"
+      "02-OCR and AI magic.ipynb":
+        title: "Recognizing text with OCR engines using Natural PDF"
+        description: "Some PDFs are just images of text instead of being actual text. This is when you need OCR (optical character recognition)."
+        order: 2
+        install:
+          - "natural-pdf[export,ai]>=0.5.0"
+          - "easyocr"
+          - "surya-ocr"
+        links:
+          - name: "Surya OCR"
+            url: "https://github.com/datalab-to/surya"
+          - name: "EasyOCR"
+            url: "https://github.com/JaidedAI/EasyOCR"
+          - name: "PaddleOCR"
+            url: "https://www.paddleocr.ai/latest/en/index.html"
+      "03-AI and data extraction.ipynb":
+        title: "AI and data extraction"
+        description: "AI is a great (albeit flawed) method for extracting specific data from your PDFs."
+        order: 3
+        install: "natural-pdf[ai,export]>=0.5.0"
+        links:
+          - name: "impira docquery"
+            url: "https://github.com/impira/docquery"
+          - name: "OpenAI structured outputs"
+            url: "https://platform.openai.com/docs/guides/structured-outputs"
+          - name: "Pydantic models"
+            url: "https://docs.pydantic.dev/latest/concepts/models/"
+      "04-Page structure.ipynb":
+        title: "Columns, multi-page flows and other page structures"
+        description: "A one-page PDF with a single block of text is easy mode. Things get more complicated when you have actual layouts."
+        order: 4
+        install: "natural-pdf[ai]>=0.5.0"
+        links:
+          - name: "Microsoft's table transfer (TATR)"
+            url: "https://github.com/microsoft/table-transformer"
+          - name: "YOLO document layout"
+            url: "https://github.com/opendatalab/DocLayout-YOLO/"
+          - name: "LayoutLMv3"
+            url: "https://huggingface.co/docs/transformers/en/model_doc/layoutlmv3"
+          - name: "merveenoyan/smol-vision"
+            url: "https://github.com/merveenoyan/smol-vision"
+      "05-Final boss.ipynb":
+        title: "Putting it all together"
+        description: "Let's see what it looks like to put this all together in a real-life scenario."
+        order: 5
+        install: "natural-pdf[all]>=0.5.0"
 
 newsletter_signup: |
-  <div style="margin: 80px auto 0; text-align: center;">
-    <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
-    <iframe src="https://subscribe-forms.beehiiv.com/0cfef682-b6ec-44eb-be72-e3241030da26" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="margin: 0 auto; display: block; border-radius: 0px 0px 0px 0px !important; background-color: transparent; box-shadow: 0 0 #0000; max-width: 100%;"></iframe>
-  </div>
+  <p class="newsletter-title">Manual Checks</p>
+  <p class="newsletter-desc">A newsletter by Jonathan Soma</p>
+  <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
+  <iframe src="https://subscribe-forms.beehiiv.com/74449fe6-9aee-4fca-81ec-c07b8588210f" class="newsletter-embed beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no"></iframe>
+
+# Default packages to install in setup cells (can be overridden per-notebook)
+# Set to false in a notebook's metadata to opt out entirely
+default_install: "natural_pdf>=0.5.0"
 
 # Publishing options
 output_dir: "docs"
-index_template: |
-  # {{ title }}
-  
-  **Jonathan Soma**, Columbia University
-
-  **Contact:** [js4571@columbia.edu](mailto:js4571@columbia.edu) • [@dangerscarf](https://x.com/dangerscarf)
-  
-  **Sites:** [Lede Program](https://ledeprogram.com/) • [jonathansoma.com](https://jonathansoma.com/) • [Practical AI for Investigative Journalism](https://www.youtube.com/playlist?list=PLewNEVDy7gq1_GPUaL0OQ31QsiHP5ncAQ) • [Bad PDFs](https://badpdfs.com/)
-
-  {{ description }}
-    
-  {{ notebooks }}
-
-  {{ newsletter }}  
-
-  ---
-  
-  *Created by {{ author }}*
