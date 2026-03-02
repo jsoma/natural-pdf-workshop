@@ -56,6 +56,43 @@ body {
 }
 
 /* ================================================================
+   NEWSLETTER FALLBACK BUTTON
+   ================================================================ */
+.newsletter-fallback-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 4px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    transition: all 0.15s;
+    margin-top: 0.5em;
+}
+.theme-noir .newsletter-fallback-btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85em;
+    color: #111;
+    background: #c0392b;
+    border: 1px solid #c0392b;
+}
+.theme-noir .newsletter-fallback-btn:hover {
+    background: #e74c3c;
+    border-color: #e74c3c;
+}
+.theme-broadsheet .newsletter-fallback-btn {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.9em;
+    color: #f0ece4;
+    background: #c0392b;
+    border: 2px solid #c0392b;
+    text-transform: uppercase;
+}
+.theme-broadsheet .newsletter-fallback-btn:hover {
+    background: #a02a1e;
+    border-color: #a02a1e;
+}
+
+/* ================================================================
    RESPONSIVE
    ================================================================ */
 @media (max-width: 640px) {

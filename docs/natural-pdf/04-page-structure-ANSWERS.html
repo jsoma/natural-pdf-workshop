@@ -68,7 +68,7 @@
 </nav>
 
 
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=c6c73e22">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=6cbd4055">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -82,7 +82,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=75912044"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=1484dbc7"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Slides:</strong> <a href="./slides.pdf">slides.pdf</a></p>
@@ -1132,10 +1132,12 @@ window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', fu
     function replaceWithLink(iframe, src) {
         var link = document.createElement('a');
         link.href = src;
-        link.textContent = 'Subscribe to the newsletter';
-        link.style.display = 'inline-block';
-        link.style.marginTop = '0.5em';
+        link.className = 'newsletter-fallback-btn';
+        link.innerHTML = 'Subscribe to the newsletter &rarr;';
         iframe.replaceWith(link);
+        // Also hide the beehiiv script tag if present
+        var scripts = document.querySelectorAll('.newsletter-signup script');
+        scripts.forEach(function(s) { s.remove(); });
     }
     document.querySelectorAll('.newsletter-signup iframe').forEach(function(iframe) {
         var src = iframe.src;
