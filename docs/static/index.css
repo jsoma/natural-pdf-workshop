@@ -37,6 +37,14 @@
     opacity: 0.5;
 }
 
+.section-downloads {
+    margin-top: 1.5em;
+}
+.section-download-btn::before {
+    content: '\2193  ';
+    opacity: 0.5;
+}
+
 /* ================================================================
 
    THEME: NOIR
@@ -108,6 +116,18 @@
 .theme-noir .section-divider {
     border: none;
     margin: 2em 0 0;
+}
+
+.theme-noir .section-download-btn {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8em;
+    color: #bbb;
+    letter-spacing: 0.02em;
+    transition: color 0.15s;
+}
+.theme-noir .section-download-btn:hover {
+    color: #e8e4dc;
 }
 
 .theme-noir .notebook-card {
@@ -328,6 +348,16 @@
     border: none;
     border-top: 3px solid #1a1a1a;
     margin: 2em 0 0;
+}
+
+.theme-broadsheet .section-download-btn {
+    display: inline-block;
+    font-size: 0.95em;
+    color: #8b5e3c;
+    transition: color 0.15s;
+}
+.theme-broadsheet .section-download-btn:hover {
+    color: #c0392b;
 }
 
 .theme-broadsheet .notebook-card {

@@ -1,6 +1,6 @@
 # Modern PDF processing with Natural PDF
 
-**NICAR 2026**
+**Dataharvest 2026**
 
 Jonathan Soma, Columbia University
 
@@ -24,8 +24,8 @@ Some PDFs are just images of text instead of being actual text. This is when you
 
 [Open in Colab](https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/02-ocr-and-ai-magic-ANSWERS.ipynb) | [Code-along](https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/02-ocr-and-ai-magic.ipynb) | [Read online](https://jsoma.github.io/natural-pdf-workshop/natural-pdf/02-ocr-and-ai-magic-ANSWERS.html)
 
-- [Surya OCR](https://github.com/datalab-to/surya)
-- [EasyOCR](https://github.com/JaidedAI/EasyOCR)
+- [GLM OCR](https://huggingface.co/zai-org/GLM-OCR)
+- [RapidOCR](https://github.com/rapidai/rapidocr)
 - [PaddleOCR](https://www.paddleocr.ai/latest/en/index.html)
 
 ### AI and data extraction
@@ -34,7 +34,6 @@ AI is a great (albeit flawed) method for extracting specific data from your PDFs
 
 [Open in Colab](https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/03-ai-and-data-extraction-ANSWERS.ipynb) | [Code-along](https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/03-ai-and-data-extraction.ipynb) | [Read online](https://jsoma.github.io/natural-pdf-workshop/natural-pdf/03-ai-and-data-extraction-ANSWERS.html)
 
-- [impira docquery](https://github.com/impira/docquery)
 - [OpenAI structured outputs](https://platform.openai.com/docs/guides/structured-outputs)
 - [Pydantic models](https://docs.pydantic.dev/latest/concepts/models/)
 

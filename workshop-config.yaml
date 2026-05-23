@@ -41,13 +41,13 @@ sections:
         order: 2
         install:
           - "natural-pdf[export,ai]>=0.5.0"
-          - "easyocr"
+          - "rapidocr"
           - "surya-ocr"
         links:
-          - name: "Surya OCR"
-            url: "https://github.com/datalab-to/surya"
-          - name: "EasyOCR"
-            url: "https://github.com/JaidedAI/EasyOCR"
+          - name: "GLM OCR"
+            url: "https://huggingface.co/zai-org/GLM-OCR"
+          - name: "RapidOCR"
+            url: "https://github.com/rapidai/rapidocr"
           - name: "PaddleOCR"
             url: "https://www.paddleocr.ai/latest/en/index.html"
       "03-AI and data extraction.ipynb":
@@ -56,8 +56,6 @@ sections:
         order: 3
         install: "natural-pdf[ai,export]>=0.5.0"
         links:
-          - name: "impira docquery"
-            url: "https://github.com/impira/docquery"
           - name: "OpenAI structured outputs"
             url: "https://platform.openai.com/docs/guides/structured-outputs"
           - name: "Pydantic models"
