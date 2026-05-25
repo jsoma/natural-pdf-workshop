@@ -8,7 +8,7 @@ Learn to extract data from PDFs with the spatial magic of Natural PDF. Basic tex
 
 **[View the workshop materials](https://jsoma.github.io/natural-pdf-workshop/)**
 
-[Open in Codespaces](https://codespaces.new/jsoma/natural-pdf-workshop?ref=main)
+[Open in Codespaces](https://codespaces.new/jsoma/natural-pdf-workshop?ref=main) | [View slides](https://jsoma.github.io/natural-pdf-workshop/natural-pdf.pdf) | [Download PPTX](https://jsoma.github.io/natural-pdf-workshop/natural-pdf.pptx)
 
 ## Materials
 

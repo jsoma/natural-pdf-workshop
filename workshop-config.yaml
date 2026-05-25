@@ -27,7 +27,6 @@ meta_links:
 sections:
   - title: "Natural PDF"
     folder: "."
-    slides: "slides.pdf"
     notebooks:
       "01-Natural PDF basics with text and tables.ipynb":
         title: "Natural PDF basics with text and tables"
