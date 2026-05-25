@@ -5,9 +5,11 @@ github_repo: "jsoma/natural-pdf-workshop"
 github_branch: "main"
 execution_environment: "project"
 
-# Workshop metadata
 author: "Jonathan Soma, Columbia University"
 conference_label: "Dataharvest 2026"
+
+slides: "Natural PDF.pptx"
+social_slide_page: 25
 
 meta_links:
   - name: "js4571@columbia.edu"
