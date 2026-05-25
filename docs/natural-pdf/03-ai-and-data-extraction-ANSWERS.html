@@ -4,6 +4,29 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AI and data extraction</title>
+    
+    <meta name="description" content="AI is a great (albeit flawed) method for extracting specific data from your PDFs.">
+    <meta name="author" content="Jonathan Soma, Columbia University">
+    <link rel="canonical" href="https://jsoma.github.io/natural-pdf-workshop/natural-pdf/03-ai-and-data-extraction-ANSWERS.html">
+    
+    
+    
+    <meta property="og:title" content="AI and data extraction">
+    <meta property="og:description" content="AI is a great (albeit flawed) method for extracting specific data from your PDFs.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jsoma.github.io/natural-pdf-workshop/natural-pdf/03-ai-and-data-extraction-ANSWERS.html">
+    <meta property="og:site_name" content="Modern PDF processing with Natural PDF">
+    <meta property="og:image" content="https://jsoma.github.io/natural-pdf-workshop/social-image.svg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="AI and data extraction preview">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI and data extraction">
+    <meta name="twitter:description" content="AI is a great (albeit flawed) method for extracting specific data from your PDFs.">
+    <meta name="twitter:image" content="https://jsoma.github.io/natural-pdf-workshop/social-image.svg">
+    <meta name="twitter:image:alt" content="AI and data extraction preview">
+    <meta name="twitter:creator" content="@dangerscarf">
+    
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -70,12 +93,27 @@
 
 
 <div class="nb-actions">
-    <a href="https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/03-ai-and-data-extraction-ANSWERS.ipynb" class="nb-action-btn nb-action-colab" target="_blank" rel="noopener">Run in Colab</a>
+    
+    <details class="nb-try-menu">
+        <summary class="nb-action-btn nb-action-colab">Try it</summary>
+        <div class="nb-try-options">
+            
+            <a href="https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/03-ai-and-data-extraction-ANSWERS.ipynb" target="_blank" rel="noopener">Open in Colab</a>
+            
+            <a href="https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/03-ai-and-data-extraction.ipynb" target="_blank" rel="noopener">Colab (code-along)</a>
+            
+            <a href="https://codespaces.new/jsoma/natural-pdf-workshop?ref=main" target="_blank" rel="noopener">Codespaces</a>
+            
+        </div>
+    </details>
+    
+    
     <a href="03-ai-and-data-extraction-ANSWERS.ipynb" class="nb-action-btn nb-action-download" download>Download notebook</a>
+    
 </div>
 
 
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=871a30ac">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=59846127">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -89,7 +127,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=38b0c2c7"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=04bc6183"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Slides:</strong> <a href="./slides.pdf">slides.pdf</a></p>
@@ -977,6 +1015,35 @@ window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', fu
         var label = e.matches ? 'Light' : 'Dark';
         document.querySelectorAll('.theme-switcher button').forEach(function(b) {
             b.classList.toggle('active', b.textContent.trim() === label);
+        });
+    }
+});
+
+function loadSlides(slideId, slideUrl) {
+    var root = document.getElementById(slideId);
+    if (!root) return;
+    var preview = root.querySelector('.slide-preview');
+    var container = root.querySelector('.slide-container');
+    var frame = container && container.querySelector('iframe, embed');
+    if (frame && !frame.getAttribute('src')) {
+        frame.setAttribute('src', slideUrl);
+    }
+    if (preview) preview.style.display = 'none';
+    if (container) container.style.display = 'block';
+}
+
+document.addEventListener('click', function(event) {
+    document.querySelectorAll('details.try-menu[open], details.nb-try-menu[open]').forEach(function(menu) {
+        if (!menu.contains(event.target)) {
+            menu.removeAttribute('open');
+        }
+    });
+});
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        document.querySelectorAll('details.try-menu[open], details.nb-try-menu[open]').forEach(function(menu) {
+            menu.removeAttribute('open');
         });
     }
 });

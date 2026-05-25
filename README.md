@@ -8,51 +8,55 @@ Learn to extract data from PDFs with the spatial magic of Natural PDF. Basic tex
 
 **[View the workshop materials](https://jsoma.github.io/natural-pdf-workshop/)**
 
-## Notebooks
+[Open in Codespaces](https://codespaces.new/jsoma/natural-pdf-workshop?ref=main)
 
-### Natural PDF basics with text and tables
+## Materials
+
+### Natural PDF
+
+#### Natural PDF basics with text and tables
 
 Natural PDF is a spatially-aware PDF processing library that makes accessing PDF data a breeze.
 
-[Open in Colab](https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/01-natural-pdf-basics-with-text-and-tables-ANSWERS.ipynb) | [Code-along](https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/01-natural-pdf-basics-with-text-and-tables.ipynb) | [Read online](https://jsoma.github.io/natural-pdf-workshop/natural-pdf/01-natural-pdf-basics-with-text-and-tables-ANSWERS.html)
+Try: [Open in Colab](https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/01-natural-pdf-basics-with-text-and-tables-ANSWERS.ipynb) | [Colab (code-along)](https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/01-natural-pdf-basics-with-text-and-tables.ipynb) | [Codespaces](https://codespaces.new/jsoma/natural-pdf-workshop?ref=main) | [Download .ipynb](https://jsoma.github.io/natural-pdf-workshop/natural-pdf/01-natural-pdf-basics-with-text-and-tables-ANSWERS.ipynb) | [Read online](https://jsoma.github.io/natural-pdf-workshop/natural-pdf/01-natural-pdf-basics-with-text-and-tables-ANSWERS.html)
 
 - [Natural PDF documentation](https://jsoma.github.io/natural-pdf/)
 
-### Recognizing text with OCR engines using Natural PDF
+#### Recognizing text with OCR engines using Natural PDF
 
 Some PDFs are just images of text instead of being actual text. This is when you need OCR (optical character recognition).
 
-[Open in Colab](https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/02-ocr-and-ai-magic-ANSWERS.ipynb) | [Code-along](https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/02-ocr-and-ai-magic.ipynb) | [Read online](https://jsoma.github.io/natural-pdf-workshop/natural-pdf/02-ocr-and-ai-magic-ANSWERS.html)
+Try: [Open in Colab](https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/02-ocr-and-ai-magic-ANSWERS.ipynb) | [Colab (code-along)](https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/02-ocr-and-ai-magic.ipynb) | [Codespaces](https://codespaces.new/jsoma/natural-pdf-workshop?ref=main) | [Download .ipynb](https://jsoma.github.io/natural-pdf-workshop/natural-pdf/02-ocr-and-ai-magic-ANSWERS.ipynb) | [Read online](https://jsoma.github.io/natural-pdf-workshop/natural-pdf/02-ocr-and-ai-magic-ANSWERS.html)
 
 - [GLM OCR](https://huggingface.co/zai-org/GLM-OCR)
 - [RapidOCR](https://github.com/rapidai/rapidocr)
 - [PaddleOCR](https://www.paddleocr.ai/latest/en/index.html)
 
-### AI and data extraction
+#### AI and data extraction
 
 AI is a great (albeit flawed) method for extracting specific data from your PDFs.
 
-[Open in Colab](https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/03-ai-and-data-extraction-ANSWERS.ipynb) | [Code-along](https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/03-ai-and-data-extraction.ipynb) | [Read online](https://jsoma.github.io/natural-pdf-workshop/natural-pdf/03-ai-and-data-extraction-ANSWERS.html)
+Try: [Open in Colab](https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/03-ai-and-data-extraction-ANSWERS.ipynb) | [Colab (code-along)](https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/03-ai-and-data-extraction.ipynb) | [Codespaces](https://codespaces.new/jsoma/natural-pdf-workshop?ref=main) | [Download .ipynb](https://jsoma.github.io/natural-pdf-workshop/natural-pdf/03-ai-and-data-extraction-ANSWERS.ipynb) | [Read online](https://jsoma.github.io/natural-pdf-workshop/natural-pdf/03-ai-and-data-extraction-ANSWERS.html)
 
 - [OpenAI structured outputs](https://platform.openai.com/docs/guides/structured-outputs)
 - [Pydantic models](https://docs.pydantic.dev/latest/concepts/models/)
 
-### Columns, multi-page flows and other page structures
+#### Columns, multi-page flows and other page structures
 
 A one-page PDF with a single block of text is easy mode. Things get more complicated when you have actual layouts.
 
-[Open in Colab](https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/04-page-structure-ANSWERS.ipynb) | [Code-along](https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/04-page-structure.ipynb) | [Read online](https://jsoma.github.io/natural-pdf-workshop/natural-pdf/04-page-structure-ANSWERS.html)
+Try: [Open in Colab](https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/04-page-structure-ANSWERS.ipynb) | [Colab (code-along)](https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/04-page-structure.ipynb) | [Codespaces](https://codespaces.new/jsoma/natural-pdf-workshop?ref=main) | [Download .ipynb](https://jsoma.github.io/natural-pdf-workshop/natural-pdf/04-page-structure-ANSWERS.ipynb) | [Read online](https://jsoma.github.io/natural-pdf-workshop/natural-pdf/04-page-structure-ANSWERS.html)
 
 - [Microsoft's table transfer (TATR)](https://github.com/microsoft/table-transformer)
 - [YOLO document layout](https://github.com/opendatalab/DocLayout-YOLO/)
 - [LayoutLMv3](https://huggingface.co/docs/transformers/en/model_doc/layoutlmv3)
 - [merveenoyan/smol-vision](https://github.com/merveenoyan/smol-vision)
 
-### Putting it all together
+#### Putting it all together
 
 Let's see what it looks like to put this all together in a real-life scenario.
 
-[Open in Colab](https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/05-final-boss-ANSWERS.ipynb) | [Code-along](https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/05-final-boss.ipynb) | [Read online](https://jsoma.github.io/natural-pdf-workshop/natural-pdf/05-final-boss-ANSWERS.html)
+Try: [Open in Colab](https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/05-final-boss-ANSWERS.ipynb) | [Colab (code-along)](https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/05-final-boss.ipynb) | [Codespaces](https://codespaces.new/jsoma/natural-pdf-workshop?ref=main) | [Download .ipynb](https://jsoma.github.io/natural-pdf-workshop/natural-pdf/05-final-boss-ANSWERS.ipynb) | [Read online](https://jsoma.github.io/natural-pdf-workshop/natural-pdf/05-final-boss-ANSWERS.html)
 
 ## Contact
 

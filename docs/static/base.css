@@ -56,6 +56,97 @@ body {
 }
 
 /* ================================================================
+   SHARED LAZY SLIDE EMBED
+   ================================================================ */
+.slide-embed {
+    margin: 2em 0;
+}
+.slide-embed.workshop-slide-embed {
+    margin-top: 1.5em;
+}
+.slide-embed .slide-preview {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+}
+.slide-embed .slide-preview img {
+    display: block;
+    width: 100%;
+    max-height: 460px;
+    object-fit: contain;
+}
+.slide-embed .slide-preview-fallback {
+    display: block;
+    padding: 4em 2em;
+    text-align: center;
+}
+.slide-embed .slide-preview-label {
+    position: absolute;
+    right: 18px;
+    bottom: 18px;
+    padding: 9px 14px;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78em;
+    font-weight: 600;
+}
+.slide-embed .slide-download {
+    margin-top: 0.6em;
+    text-align: center;
+}
+.slide-embed .slide-container iframe {
+    display: block;
+    width: 100%;
+    height: min(78vh, 760px);
+    border: 0;
+}
+.theme-noir .slide-embed .slide-preview {
+    border: 1px solid #333;
+    background: #0b0b0b;
+}
+.theme-noir .slide-embed .slide-preview:hover {
+    border-color: #666;
+}
+.theme-noir .slide-embed .slide-preview-fallback {
+    color: #999;
+}
+.theme-noir .slide-embed .slide-preview-label {
+    background: #e8e4dc;
+    color: #111;
+}
+.theme-noir .slide-embed .slide-container iframe {
+    border: 1px solid #333;
+}
+.theme-noir .slide-embed .slide-download a {
+    color: #bbb;
+}
+.theme-broadsheet .slide-embed .slide-preview {
+    border: 2px solid #1a1a1a;
+    background: #efe4d2;
+}
+.theme-broadsheet .slide-embed .slide-preview:hover {
+    border-color: #8b5e3c;
+}
+.theme-broadsheet .slide-embed .slide-preview-fallback {
+    color: #5b4a3e;
+}
+.theme-broadsheet .slide-embed .slide-preview-label {
+    background: #1a1a1a;
+    color: #f5f0e6;
+}
+.theme-broadsheet .slide-embed .slide-container iframe {
+    border: 2px solid #1a1a1a;
+}
+.theme-broadsheet .slide-embed .slide-download a {
+    color: #8b5e3c;
+}
+
+/* ================================================================
    NEWSLETTER FALLBACK BUTTON
    ================================================================ */
 .newsletter-fallback-btn {

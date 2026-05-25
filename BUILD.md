@@ -23,6 +23,15 @@ uv tool install -e ~/Development/workshop-publisher
 That puts `workshop-publish` on your path. Because it is installed with `-e`,
 changes in `~/Development/workshop-publisher` are used by the command.
 
+Install the workshop environment:
+
+```bash
+uv sync --frozen
+```
+
+Codespaces uses `.devcontainer/devcontainer.json` to install `uv`, run the same
+locked sync, and register a Jupyter kernel named `Natural PDF Workshop`.
+
 ## Rebuild
 
 Run this from the workshop root, the directory containing
@@ -67,5 +76,6 @@ workshop-publish --execute
 ```
 
 Use `--execute` only when you want the publisher to execute notebooks before
-publishing. It creates or reuses `.workshop-cache/venv`, installs packages from
-`workshop-config.yaml`, and loads `.env` if present.
+publishing. Because `workshop-config.yaml` sets
+`execution_environment: "project"`, it runs `uv sync --frozen` and executes with
+the project `.venv`. It also loads `.env` if present.

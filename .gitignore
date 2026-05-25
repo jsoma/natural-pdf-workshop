@@ -3,3 +3,8 @@
 output
 .env
 diagrams.pdf
+.venv
+.workshop-cache
+__pycache__
+.pytest_cache
+.ruff_cache

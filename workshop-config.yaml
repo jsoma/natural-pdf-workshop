@@ -1,9 +1,9 @@
 # Workshop configuration
 title: "Modern PDF processing with Natural PDF"
 description: "Learn to extract data from PDFs with the spatial magic of Natural PDF. Basic text extraction to OCR, AI, and complex layouts — everything you need to get structured data out of any PDF."
-# github_repo is auto-detected from git remote; uncomment to override:
-# github_repo: "jsoma/natural-pdf-workshop"
+github_repo: "jsoma/natural-pdf-workshop"
 github_branch: "main"
+execution_environment: "project"
 
 # Workshop metadata
 author: "Jonathan Soma, Columbia University"

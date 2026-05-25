@@ -4,6 +4,29 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Columns, multi-page flows and other page structures</title>
+    
+    <meta name="description" content="A one-page PDF with a single block of text is easy mode. Things get more complicated when you have actual layouts.">
+    <meta name="author" content="Jonathan Soma, Columbia University">
+    <link rel="canonical" href="https://jsoma.github.io/natural-pdf-workshop/natural-pdf/04-page-structure-ANSWERS.html">
+    
+    
+    
+    <meta property="og:title" content="Columns, multi-page flows and other page structures">
+    <meta property="og:description" content="A one-page PDF with a single block of text is easy mode. Things get more complicated when you have actual layouts.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jsoma.github.io/natural-pdf-workshop/natural-pdf/04-page-structure-ANSWERS.html">
+    <meta property="og:site_name" content="Modern PDF processing with Natural PDF">
+    <meta property="og:image" content="https://jsoma.github.io/natural-pdf-workshop/social-image.svg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Columns, multi-page flows and other page structures preview">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Columns, multi-page flows and other page structures">
+    <meta name="twitter:description" content="A one-page PDF with a single block of text is easy mode. Things get more complicated when you have actual layouts.">
+    <meta name="twitter:image" content="https://jsoma.github.io/natural-pdf-workshop/social-image.svg">
+    <meta name="twitter:image:alt" content="Columns, multi-page flows and other page structures preview">
+    <meta name="twitter:creator" content="@dangerscarf">
+    
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -70,12 +93,27 @@
 
 
 <div class="nb-actions">
-    <a href="https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/04-page-structure-ANSWERS.ipynb" class="nb-action-btn nb-action-colab" target="_blank" rel="noopener">Run in Colab</a>
+    
+    <details class="nb-try-menu">
+        <summary class="nb-action-btn nb-action-colab">Try it</summary>
+        <div class="nb-try-options">
+            
+            <a href="https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/04-page-structure-ANSWERS.ipynb" target="_blank" rel="noopener">Open in Colab</a>
+            
+            <a href="https://colab.research.google.com/github/jsoma/natural-pdf-workshop/blob/main/docs/natural-pdf/04-page-structure.ipynb" target="_blank" rel="noopener">Colab (code-along)</a>
+            
+            <a href="https://codespaces.new/jsoma/natural-pdf-workshop?ref=main" target="_blank" rel="noopener">Codespaces</a>
+            
+        </div>
+    </details>
+    
+    
     <a href="04-page-structure-ANSWERS.ipynb" class="nb-action-btn nb-action-download" download>Download notebook</a>
+    
 </div>
 
 
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=df69127b">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=13918b5d">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -89,7 +127,7 @@
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=926b535f"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=4b6fd86d"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Slides:</strong> <a href="./slides.pdf">slides.pdf</a></p>
@@ -1135,6 +1173,35 @@ window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', fu
         var label = e.matches ? 'Light' : 'Dark';
         document.querySelectorAll('.theme-switcher button').forEach(function(b) {
             b.classList.toggle('active', b.textContent.trim() === label);
+        });
+    }
+});
+
+function loadSlides(slideId, slideUrl) {
+    var root = document.getElementById(slideId);
+    if (!root) return;
+    var preview = root.querySelector('.slide-preview');
+    var container = root.querySelector('.slide-container');
+    var frame = container && container.querySelector('iframe, embed');
+    if (frame && !frame.getAttribute('src')) {
+        frame.setAttribute('src', slideUrl);
+    }
+    if (preview) preview.style.display = 'none';
+    if (container) container.style.display = 'block';
+}
+
+document.addEventListener('click', function(event) {
+    document.querySelectorAll('details.try-menu[open], details.nb-try-menu[open]').forEach(function(menu) {
+        if (!menu.contains(event.target)) {
+            menu.removeAttribute('open');
+        }
+    });
+});
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        document.querySelectorAll('details.try-menu[open], details.nb-try-menu[open]').forEach(function(menu) {
+            menu.removeAttribute('open');
         });
     }
 });
