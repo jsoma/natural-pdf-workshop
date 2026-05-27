@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "tool": "workshop-publisher",
+  "tool_version": "0.1.0",
+  "built_at": "2026-05-27T16:46:27+02:00",
+  "project_root": "/Users/soma/Library/CloudStorage/Dropbox/Soma/Curriculum/2026-nicar/02-fri-natural-pdf/natural-pdf-workshop",
+  "config_path": "workshop-config.yaml",
+  "build_command": [
+    "workshop-publish"
+  ],
+  "build_target": null,
+  "title": "Modern PDF processing with Natural PDF",
+  "description": "Learn to extract data from PDFs with the spatial magic of Natural PDF. Basic text extraction to OCR, AI, and complex layouts \u2014 everything you need to get structured data out of any PDF.",
+  "event": "Dataharvest 2026",
+  "author": "Jonathan Soma, Columbia University",
+  "github_repo": "jsoma/natural-pdf-workshop",
+  "github_branch": "main",
+  "required_env_keys": [],
+  "site_dir": "docs",
+  "index_html": "docs/index.html",
+  "counts": {
+    "items": 5
+  }
+}
