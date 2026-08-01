@@ -1,16 +1,21 @@
 {
-  "name": "Natural PDF Workshop",
-  "image": "mcr.microsoft.com/devcontainers/python:3.11",
-  "onCreateCommand": "sudo apt-get update && sudo apt-get install -y --no-install-recommends libgl1 libglib2.0-0 && sudo rm -rf /var/lib/apt/lists/* && curl -LsSf https://astral.sh/uv/install.sh | sh && ~/.local/bin/uv sync --frozen && ~/.local/bin/uv run python -m ipykernel install --user --name natural-pdf-workshop --display-name 'Natural PDF Workshop'",
+  "name": "Modern PDF processing with Natural PDF",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11-bookworm",
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "waitFor": "postCreateCommand",
   "remoteEnv": {
-    "PATH": "/home/vscode/.local/bin:${containerEnv:PATH}"
+    "PATH": "${containerWorkspaceFolder}/.venv/bin:/home/vscode/.local/bin:${containerEnv:PATH}"
   },
   "customizations": {
     "vscode": {
       "extensions": [
         "ms-python.python",
         "ms-toolsai.jupyter"
-      ]
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python",
+        "jupyter.notebookFileRoot": "${workspaceFolder}"
+      }
     }
   }
 }

@@ -51,6 +51,18 @@ The generated site entry point is:
 docs/index.html
 ```
 
+## Colab Kernel Restart After Install
+
+Colab ships with a Pillow that doesn't match what `natural-pdf` needs, and the
+preloaded copy stays stale after `pip install`. The `restart_check` key under
+`default_install` in `workshop-config.yaml` handles this: every generated setup
+cell ends with a Colab-only block that runs the configured import
+(`from PIL import ImageText`) and, if it raises `ImportError`, restarts the
+kernel once. Everything is already installed at that point, so the student just
+continues with the next cell — no re-run needed. Outside Colab the block is a
+no-op. Notebooks can override or opt out with `restart_check` in their own
+`install:` dict (`restart_check: false` disables it).
+
 ## Current Warning Behavior
 
 `workshop-publish` prints warnings but still exits successfully. Use

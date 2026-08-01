@@ -6,7 +6,7 @@ github_branch: "main"
 execution_environment: "project"
 
 author: "Jonathan Soma, Columbia University"
-conference_label: "Dataharvest 2026"
+conference_label: "Abraji 2026"
 
 slides: "Natural PDF.pptx"
 social_slide_page: 25
@@ -32,7 +32,7 @@ sections:
         title: "Natural PDF basics with text and tables"
         description: "Natural PDF is a spatially-aware PDF processing library that makes accessing PDF data a breeze."
         order: 1
-        install: "natural_pdf>=0.6.4"
+        install: "natural_pdf>=0.7.0"
         links:
           - name: "Natural PDF documentation"
             url: "https://jsoma.github.io/natural-pdf/"
@@ -41,7 +41,7 @@ sections:
         description: "Some PDFs are just images of text instead of being actual text. This is when you need OCR (optical character recognition)."
         order: 2
         install:
-          - "natural-pdf[export,ai]>=0.6.4"
+          - "natural-pdf[export,ai]>=0.7.0"
           - "rapidocr"
         links:
           - name: "GLM OCR"
@@ -54,7 +54,7 @@ sections:
         title: "AI and data extraction"
         description: "AI is a great (albeit flawed) method for extracting specific data from your PDFs."
         order: 3
-        install: "natural-pdf[ai,export]>=0.6.4"
+        install: "natural-pdf[ai,export]>=0.7.0"
         links:
           - name: "OpenAI structured outputs"
             url: "https://platform.openai.com/docs/guides/structured-outputs"
@@ -64,7 +64,7 @@ sections:
         title: "Columns, multi-page flows and other page structures"
         description: "A one-page PDF with a single block of text is easy mode. Things get more complicated when you have actual layouts."
         order: 4
-        install: "natural-pdf[ai]>=0.6.4"
+        install: "natural-pdf[ai]>=0.7.0"
         links:
           - name: "Microsoft's table transfer (TATR)"
             url: "https://github.com/microsoft/table-transformer"
@@ -78,7 +78,7 @@ sections:
         title: "Putting it all together"
         description: "Let's see what it looks like to put this all together in a real-life scenario."
         order: 5
-        install: "natural-pdf[all]>=0.6.4"
+        install: "natural-pdf[all]>=0.7.0"
 
 newsletter_signup: |
   <p class="newsletter-title">Manual Checks</p>
@@ -88,7 +88,12 @@ newsletter_signup: |
 
 # Default packages to install in setup cells (can be overridden per-notebook)
 # Set to false in a notebook's metadata to opt out entirely
-default_install: "natural_pdf>=0.6.4"
+# restart_check: Colab preloads an older Pillow; if this import still fails
+# after installation, the setup cell restarts the kernel once so the upgraded
+# Pillow takes effect. Applies to every notebook's setup cell.
+default_install:
+  packages: "natural_pdf>=0.7.0"
+  restart_check: "from PIL import ImageText"
 
 # Publishing options
 output_dir: "docs"
