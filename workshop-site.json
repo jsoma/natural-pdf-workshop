@@ -2,7 +2,7 @@
   "schema_version": 1,
   "tool": "workshop-publisher",
   "tool_version": "0.1.0",
-  "built_at": "2026-08-01T08:26:55-03:00",
+  "built_at": "2026-08-01T08:40:05-03:00",
   "project_root": "/Users/soma/Library/CloudStorage/Dropbox/Soma/Curriculum/2026-nicar/02-fri-natural-pdf/natural-pdf-workshop",
   "config_path": "workshop-config.yaml",
   "build_command": [

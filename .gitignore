@@ -8,3 +8,5 @@ diagrams.pdf
 __pycache__
 .pytest_cache
 .ruff_cache
+Natural PDF-old.pptx
+~$*.pptx
